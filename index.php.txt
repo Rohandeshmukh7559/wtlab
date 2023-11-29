@@ -1,0 +1,43 @@
+<?php
+session_start();
+
+// Set the maximum number of concurrencies allowed
+$maxConcurrencies = 3;
+
+// Check if the user is already logged in
+if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+    echo "You are already logged in.";
+    exit;
+}
+
+// Check the number of current concurrencies
+if (!isset($_SESSION['concurrency_count'])) {
+    $_SESSION['concurrency_count'] = 1;
+} else {
+    $_SESSION['concurrency_count']++;
+
+    // Check if the maximum limit is reached
+    if ($_SESSION['concurrency_count'] > $maxConcurrencies) {
+        echo "Maximum number of concurrencies reached. Please try again later.";
+        exit;
+    }
+}
+
+// Simulate a login (you would replace this with your actual login logic)
+$_SESSION['user_id'] = 123; // Replace with the actual user ID
+$_SESSION['logged_in'] = true;
+
+echo "Login successful!";
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+</head>
+<body>
+
+<!-- Your HTML login form goes here -->
+
+</body>
+</html>
