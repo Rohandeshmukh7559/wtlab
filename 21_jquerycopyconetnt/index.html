@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery Demo</title>
+  <!-- Include jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <style>
+    /* Some basic styling for demonstration purposes */
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      margin: 5px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>List Copy Demo</h2>
+
+  <!-- Source List -->
+  <h3>Source List</h3>
+  <ul id="sourceList">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+  </ul>
+
+  <!-- Destination List -->
+  <h3>Destination List</h3>
+  <ul id="destinationList"></ul>
+
+  <!-- Button to Copy Items -->
+  <button id="copyButton">Copy Items</button>
+
+  <!-- Element Creation Demo -->
+  <h2>Element Creation Demo</h2>
+  <button id="createElementButton">Create Element</button>
+  <div id="createdElementContainer"></div>
+
+  <script>
+    // Copy items from sourceList to destinationList
+    $('#copyButton').on('click', function() {
+      // Clear destinationList before copying
+      $('#destinationList').empty();
+
+      // Copy items from sourceList to destinationList
+      $('#sourceList li').clone().appendTo('#destinationList');
+    });
+
+    // Create a new element and append it to the createdElementContainer
+    $('#createElementButton').on('click', function() {
+      // Create a new paragraph element with some text
+      var newElement = $('<p>').text('This is a new element created with jQuery!');
+
+      // Append the new element to the createdElementContainer
+      $('#createdElementContainer').append(newElement);
+    });
+  </script>
+</body>
+</html>
